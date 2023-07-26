@@ -261,7 +261,11 @@ Resources:
         DeletionPolicy: Retain
         Properties:
             BucketName: !Sub '${AppName}-badges-images-${Stage}'
-            AccessControl: PublicRead
+            PublicAccessBlockConfiguration:
+              BlockPublicAcls: false
+            OwnershipControls:
+              Rules:
+                - ObjectOwnership: ObjectWriter
             WebsiteConfiguration:
                 IndexDocument: index.html
             CorsConfiguration:
